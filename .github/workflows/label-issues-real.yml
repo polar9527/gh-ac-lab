@@ -1,0 +1,15 @@
+name: Label Issues (Permissions Example)
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  assign-label:
+    permissions:
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign label
+        if: contains(github.event.issue.title, 'bug')
+        run: |
+          echo "...."
